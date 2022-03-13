@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_template_mvvm/core/base/view/base_view.dart';
-import 'package:flutter_application_template_mvvm/core/init/lang/language_manager.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../../../core/base/view/base_view.dart';
 import '../../../core/components/text/locale_text.dart';
+import '../../../core/init/lang/language_manager.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../viewmodel/test_viewmodel.dart';
 
@@ -16,6 +16,7 @@ class TestView extends StatelessWidget {
     return BaseView<TestViewModel>(
       viewModel: TestViewModel(),
       onModelReady: (viewModel) {
+        viewModel.setContex(context);
         viewModel.fetchAllData();
       },
       onPageBuilder: (BuildContext buildContext, TestViewModel viewModel) =>
@@ -37,14 +38,22 @@ class TestView extends StatelessWidget {
                 child: const Text("data"),
               ),
               ElevatedButton(
-                onPressed: ()  {
+                onPressed: () {
                   checkLocale = !checkLocale;
                   checkLocale
                       ? context.setLocale(LanguageManager.instance.trLocale)
                       : context.setLocale(LanguageManager.instance.enLocale);
                 },
                 child: const Text("change language"),
-              )
+              ),
+              ElevatedButton(
+                onPressed: () => viewModel.changeDarkTheme(),
+                child: const Text("Change Dark Theme"),
+              ),
+              ElevatedButton(
+                onPressed: () => viewModel.changeLightTheme(),
+                child: const Text("Change Light Theme"),
+              ),
             ],
           ),
         ),
