@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_template_mvvm/core/base/view/base_view.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../../../core/components/text/locale_text.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 import '../viewmodel/test_viewmodel.dart';
 
 class TestView extends StatelessWidget {
@@ -20,6 +22,7 @@ class TestView extends StatelessWidget {
         body: Center(
           child: Column(
             children: [
+              const LocaleText(value: LocaleKeys.welcome),
               Observer(
                 builder: (_) {
                   return Text(
@@ -29,7 +32,7 @@ class TestView extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () => viewModel.welcome(),
-                child: const Text("Welcome"),
+                child: const Text("data"),
               )
             ],
           ),
