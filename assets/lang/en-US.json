@@ -1,3 +1,8 @@
 {
-    "welcome": "Welcome to My App"
+    "welcome": "Welcome to My App",
+    "hi" : "Selam!",
+    "example":{
+        "test": "testing"
+    }
+    
 }

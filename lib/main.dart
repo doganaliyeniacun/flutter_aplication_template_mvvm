@@ -13,7 +13,7 @@ void main() async {
       child: MyApp(),
       supportedLocales: LanguageManager.instance.supportedLocales,
       path: ApplicationConstants.LANG_ASSET_PATH,
-      startLocale: LanguageManager.instance.enLocale,
+      saveLocale: true,
     ),
   );
 }
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      home: const TestView(),
+      home: TestView(),
     );
   }
 }
