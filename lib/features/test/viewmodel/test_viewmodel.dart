@@ -9,18 +9,18 @@ part 'test_viewmodel.g.dart';
 class TestViewModel = _TestViewModelBase with _$TestViewModel;
 
 abstract class _TestViewModelBase with Store {
-  late BuildContext _context;
+  BuildContext? _context;
 
   void setContex(BuildContext context) {
     _context = context;
   }
 
   void changeDarkTheme() {    
-    Provider.of<ThemeNotifier>(_context,listen: false).changeTheme(AppThemes.DARK);
+    Provider.of<ThemeNotifier>(_context!,listen: false).changeTheme(AppThemes.DARK);
   }
 
   void changeLightTheme() {    
-    Provider.of<ThemeNotifier>(_context,listen: false).changeTheme(AppThemes.LIGHT);
+    Provider.of<ThemeNotifier>(_context!,listen: false).changeTheme(AppThemes.LIGHT);
   }
 
   void fetchAllData() {

@@ -3,9 +3,9 @@ import 'package:mobx/mobx.dart';
 
 
 class BaseView<T extends Store> extends StatefulWidget {
-  final Widget Function(BuildContext buildContext, T viewModel) onPageBuilder;
+  final Widget Function(BuildContext context, T viewModel) onPageBuilder;
   final T viewModel;
-  final Function(T viewModel) onModelReady;
+  final Function(T model) onModelReady;
   final VoidCallback? onDispose;
 
   const BaseView({

@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template_mvvm/core/init/cache/locale_manager.dart';
 import 'core/constants/app/app_constants.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
@@ -11,6 +12,7 @@ import 'core/init/lang/language_manager.dart';
 import 'features/test/view/test_view.dart';
 
 void main() async {
+  LocaleManager.prefencesInit();
   await _init();
   runApp(
     MultiProvider(

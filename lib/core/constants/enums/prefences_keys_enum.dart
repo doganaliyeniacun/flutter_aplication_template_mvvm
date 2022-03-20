@@ -1,0 +1,1 @@
+enum PrefencesKeys { TOKEN }
