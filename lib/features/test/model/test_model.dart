@@ -1,4 +1,10 @@
-class TestModel {
+import 'package:flutter_application_template_mvvm/core/base/model/base_model.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'test_model.g.dart';
+
+@JsonSerializable()
+class TestModel extends BaseModel {
   int? userId;
   int? id;
   String? title;
@@ -6,19 +12,13 @@ class TestModel {
 
   TestModel({this.userId, this.id, this.title, this.body});
 
-  TestModel.fromJson(Map<String, dynamic> json) {
-    userId = json['userId'];
-    id = json['id'];
-    title = json['title'];
-    body = json['body'];
+  @override
+  fromJson(Map<String, dynamic> json) {
+    return _$TestModelFromJson(json);
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['userId'] = userId;
-    data['id'] = id;
-    data['title'] = title;
-    data['body'] = body;
-    return data;
+    return _$TestModelToJson(this);
   }
 }

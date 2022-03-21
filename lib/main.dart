@@ -12,7 +12,6 @@ import 'core/init/lang/language_manager.dart';
 import 'features/test/view/test_view.dart';
 
 void main() async {
-  LocaleManager.prefencesInit();
   await _init();
   runApp(
     MultiProvider(
@@ -30,6 +29,7 @@ void main() async {
 Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await LocaleManager.prefencesInit();
 }
 
 // ignore: use_key_in_widget_constructors

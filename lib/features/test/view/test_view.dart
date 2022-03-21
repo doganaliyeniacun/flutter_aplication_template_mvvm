@@ -20,6 +20,7 @@ class TestView extends StatelessWidget {
         viewModel = model;
         model.setContex(context);
         model.fetchAllData();
+        model.getData();
       },
       onPageBuilder: (BuildContext buildContext, TestViewModel value) =>
           Scaffold(

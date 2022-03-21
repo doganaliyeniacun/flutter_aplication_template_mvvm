@@ -1,4 +1,6 @@
-import 'dart:html';
+
+
+import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_application_template_mvvm/core/base/model/base_error.dart';
@@ -39,7 +41,7 @@ class NetworkManager {
         } else {
           return responseBody;
         }
-        break;
+        
       default:
     }
   }
