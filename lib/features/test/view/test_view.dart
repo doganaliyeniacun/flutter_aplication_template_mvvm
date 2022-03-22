@@ -10,7 +10,7 @@ import '../viewmodel/test_viewmodel.dart';
 
 class TestView extends StatelessWidget {
   bool checkLocale = false;
-  late TestViewModel viewModel;
+  TestViewModel? viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,39 +18,41 @@ class TestView extends StatelessWidget {
       viewModel: TestViewModel(),
       onModelReady: (model) {
         viewModel = model;
-        model.setContex(context);
-        model.fetchAllData();
-        model.getData();
+        model.setContext(context);
+        viewModel?.init();
       },
-      onPageBuilder: (BuildContext buildContext, TestViewModel value) =>
-          Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: Column(
-            children: [
-              localizationText(),
-              mobxText(),
-              changeMobxValue(),
-              localizationChangeButton(context),
-              darkButton(),
-              lightButton(),
-            ],
+      onPageBuilder: (BuildContext buildContext, TestViewModel value) {
+        viewModel = value;
+        value.setContext(buildContext);
+        return Scaffold(
+          appBar: AppBar(),
+          body: Center(
+            child: Column(
+              children: [
+                localizationText(),
+                mobxText(),
+                changeMobxValue(),
+                localizationChangeButton(context),
+                darkButton(),
+                lightButton(),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
   ElevatedButton lightButton() {
     return ElevatedButton(
-      onPressed: () => viewModel.changeLightTheme(),
+      onPressed: () => viewModel!.changeLightTheme(),
       child: const Text("Change Light Theme"),
     );
   }
 
   ElevatedButton darkButton() {
     return ElevatedButton(
-      onPressed: () => viewModel.changeDarkTheme(),
+      onPressed: () => viewModel!.changeDarkTheme(),
       child: const Text("Change Dark Theme"),
     );
   }
@@ -69,7 +71,7 @@ class TestView extends StatelessWidget {
 
   ElevatedButton changeMobxValue() {
     return ElevatedButton(
-      onPressed: () => viewModel.welcome(),
+      onPressed: () => viewModel!.welcome(),
       child: const Text("data"),
     );
   }
@@ -78,7 +80,7 @@ class TestView extends StatelessWidget {
     return Observer(
       builder: (_) {
         return Text(
-          viewModel.name.toString(),
+          viewModel!.name.toString(),
         );
       },
     );
