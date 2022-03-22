@@ -17,13 +17,12 @@ class TestView extends StatelessWidget {
     return BaseView<TestViewModel>(
       viewModel: TestViewModel(),
       onModelReady: (model) {
-        viewModel = model;
-        model.setContext(context);
         viewModel?.init();
       },
       onPageBuilder: (BuildContext buildContext, TestViewModel value) {
         viewModel = value;
         value.setContext(buildContext);
+
         return Scaffold(
           appBar: AppBar(),
           body: Center(
