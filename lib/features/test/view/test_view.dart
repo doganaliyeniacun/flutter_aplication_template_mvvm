@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_template_mvvm/core/extensions/string_extension.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../core/base/view/base_view.dart';
@@ -86,4 +87,10 @@ class TestView extends StatelessWidget {
   }
 
   LocaleText localizationText() => LocaleText(value: LocaleKeys.welcome);
+}
+
+extension _FormArea on TestView {
+  TextFormField get mailField => TextFormField(
+        validator: (value) => value.toString().isValidEmail,
+      );
 }
